@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B49AD603-5EA9-4195-ABD0-D969F2863B89}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YesCommander</RootNamespace>
+    <AssemblyName>YesCommander</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elysium">
+      <HintPath>Externals\Elysium.dll</HintPath>
+    </Reference>
+    <Reference Include="Elysium.Notifications">
+      <HintPath>Externals\Elysium.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="CustomControls\AllFollowersByClass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\BaseToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ExceptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\followerFromDatabasexaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\FollowerRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Exceptions.cs" />
+    <Compile Include="Classes\Follower.cs" />
+    <Compile Include="Classes\LoadData.cs" />
+    <Compile Include="Classes\MessagePacket.cs" />
+    <Compile Include="Classes\Mission.cs" />
+    <Compile Include="Classes\Missions.cs" />
+    <Compile Include="CustomControls\AllFollowersByClass.xaml.cs">
+      <DependentUpon>AllFollowersByClass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\BaseToolTip.xaml.cs">
+      <DependentUpon>BaseToolTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ExceptionDialog.xaml.cs">
+      <DependentUpon>ExceptionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\followerFromDatabasexaml.xaml.cs">
+      <DependentUpon>followerFromDatabasexaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\FollowerRow.xaml.cs">
+      <DependentUpon>FollowerRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="CustomControls\MissionGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Party.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomControls\MissionGrid.xaml.cs">
+      <DependentUpon>MissionGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Party.xaml.cs">
+      <DependentUpon>Party.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Beastslayer.jpg" />
+    <Resource Include="Resources\CaveDweller.jpg" />
+    <Resource Include="Resources\ColdBlooded.jpg" />
+    <Resource Include="Resources\Demonslayer.jpg" />
+    <Resource Include="Resources\Furyslayer.jpg" />
+    <Resource Include="Resources\Gronnslayer.jpg" />
+    <Resource Include="Resources\GuerillaFighter.jpg" />
+    <Resource Include="Resources\Marshwalker.jpg" />
+    <Resource Include="Resources\Mountaineer.jpg" />
+    <Resource Include="Resources\Naturalist.jpg" />
+    <Resource Include="Resources\Ogreslayer.jpg" />
+    <Resource Include="Resources\Orcslayer.jpg" />
+    <Resource Include="Resources\Plainsrunner.jpg" />
+    <Resource Include="Resources\Primalslayer.jpg" />
+    <Resource Include="Resources\Talonslayer.jpg" />
+    <Resource Include="Resources\Voidslayer.jpg" />
+    <Resource Include="Resources\Wastelander.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ability_warrior_savageblow.jpg" />
+    <Resource Include="Resources\achievement_boss_twinorcbrutes.jpg" />
+    <Resource Include="Resources\spell_deathknight_armyofthedead.jpg" />
+    <Resource Include="Resources\spell_fire_selfdestruct.jpg" />
+    <Resource Include="Resources\spell_holy_borrowedtime.jpg" />
+    <Resource Include="Resources\spell_nature_reincarnation.jpg" />
+    <Resource Include="Resources\spell_shadow_shadowbolt.jpg" />
+    <Resource Include="Resources\spell_shadow_shadowwordpain.jpg" />
+    <Resource Include="Resources\spell_shaman_earthquake.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AllyOfArgus.jpg" />
+    <Resource Include="Resources\BrewAficionado.jpg" />
+    <Resource Include="Resources\BurstOfPower.jpg" />
+    <Resource Include="Resources\CanineCompanion.jpg" />
+    <Resource Include="Resources\ChildOfDraenon.jpg" />
+    <Resource Include="Resources\ChildOfTheMoon.jpg" />
+    <Resource Include="Resources\CombatExperience.jpg" />
+    <Resource Include="Resources\Dancer.jpg" />
+    <Resource Include="Resources\DeathFascination.jpg" />
+    <Resource Include="Resources\Dwarvenborn.jpg" />
+    <Resource Include="Resources\Economist.jpg" />
+    <Resource Include="Resources\Elvenkind.jpg" />
+    <Resource Include="Resources\EpicMount.jpg" />
+    <Resource Include="Resources\GnomeLover.jpg" />
+    <Resource Include="Resources\HighStamina.jpg" />
+    <Resource Include="Resources\Humanist.jpg" />
+    <Resource Include="Resources\LoneWolf.jpg" />
+    <Resource Include="Resources\Totemist.jpg" />
+    <Resource Include="Resources\VoodooZealot.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon16.ico" />
+    <Resource Include="Resources\icon48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icon32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Town.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\alchemy.jpg" />
+    <Resource Include="Resources\angler.jpg" />
+    <Resource Include="Resources\blacksmithing.jpg" />
+    <Resource Include="Resources\Bodyguard.jpg" />
+    <Resource Include="Resources\Enchanting.jpg" />
+    <Resource Include="Resources\engineering.jpg" />
+    <Resource Include="Resources\Evergreen.jpg" />
+    <Resource Include="Resources\ExtraTraining.jpg" />
+    <Resource Include="Resources\FastLearner.jpg" />
+    <Resource Include="Resources\HearthstonePro.jpg" />
+    <Resource Include="Resources\herbalism.jpg" />
+    <Resource Include="Resources\imageBorder.png" />
+    <Resource Include="Resources\Inscription.jpg" />
+    <Resource Include="Resources\Jewelcrafting.jpg" />
+    <Resource Include="Resources\leatherworking.jpg" />
+    <Resource Include="Resources\Mining.jpg" />
+    <Resource Include="Resources\Scavenger.jpg" />
+    <Resource Include="Resources\Skinning.jpg" />
+    <Resource Include="Resources\Tailoring.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gear-bonus-divider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gear-bonus-divider_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gear-bonus-divider_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\help-icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
