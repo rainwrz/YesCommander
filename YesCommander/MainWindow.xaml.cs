@@ -33,7 +33,7 @@ namespace YesCommander
     //{
         public Missions Missions;
         private Mission CurrentMission;
-        private DataTable tableFollowers;
+        public DataTable TableFollowers;
         private List<Follower> currentFollowers;
         private List<Follower> favoriteFollowers;
         private Dictionary<int, Mission> currentMissions;
@@ -118,19 +118,8 @@ namespace YesCommander
 
         private void readButton_Click( object sender, RoutedEventArgs e )
         {
-            LoadData.OpenFile( ref this.tableFollowers );
-            if ( this.tableFollowers != null )
-            {
-                this.titleAllFavorite_MouseDown( this.titleAll, null );
-                this.GenerateFollowers();
-                if ( this.followerGrid != null )
-                    this.followerGrid.Populate( this.tableFollowers );
-                this.radioFollowers.Visibility = System.Windows.Visibility.Visible;
-                this.radioMissions.Visibility = System.Windows.Visibility.Visible;
-                this.radioAllFollowers.Visibility = System.Windows.Visibility.Visible;
-                this.titleGrid2.Visibility = System.Windows.Visibility.Visible;
-                this.followerImage.Visibility = System.Windows.Visibility.Visible;
-            }
+            LoadData.OpenFile( ref this.TableFollowers );
+            this.FillInData();
         }
 
         private void titleBlock_MouseDown( object sender, MouseButtonEventArgs e )
@@ -177,7 +166,7 @@ namespace YesCommander
             if ( this.followerGrid == null )
             {
                 this.followerGrid = new MissionGrid("随从列表");
-                this.followerGrid.Populate( this.tableFollowers );
+                this.followerGrid.Populate( this.TableFollowers );
                 this.followerGrid.Owner = this;
             }
             if ( this.followerGrid.Visibility == System.Windows.Visibility.Visible )
@@ -306,7 +295,26 @@ namespace YesCommander
         #endregion //Events
 
         #region Methods
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public void FillInData()
+        {
+            if ( this.TableFollowers != null && this.TableFollowers.Columns.Count == 22 )
+            {
+                this.titleAllFavorite_MouseDown( this.titleAll, null );
+                this.GenerateFollowers();
+                if ( this.followerGrid != null )
+                    this.followerGrid.Populate( this.TableFollowers );
+                this.radioFollowers.Visibility = System.Windows.Visibility.Visible;
+                this.radioMissions.Visibility = System.Windows.Visibility.Visible;
+                this.radioAllFollowers.Visibility = System.Windows.Visibility.Visible;
+                this.titleGrid2.Visibility = System.Windows.Visibility.Visible;
+                this.followerImage.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+                MessageBox.Show( "数据不正确，请使用压缩包内的FollowerExport插件导出的数据。", "error", MessageBoxButton.OK, MessageBoxImage.Warning );
+        }
         private void FillInMissions( Dictionary<int, Mission> missions )
         {
             List<string> items = new List<string>();
@@ -366,7 +374,7 @@ namespace YesCommander
             this.favoriteFollowers = new List<Follower>();
             List<int> abilities;
             List<int> traits;
-            foreach ( DataRow row in this.tableFollowers.Rows )
+            foreach ( DataRow row in this.TableFollowers.Rows )
             {
                 abilities = new List<int>();
                 abilities.Add( Convert.ToInt16( row[ "技能ID1" ] ) );
@@ -507,5 +515,15 @@ namespace YesCommander
             MessageBox.Show( "str" );
         }
         #endregion //Methods
+
+        private void InputButton_Click( object sender, RoutedEventArgs e )
+        {
+            InputWindow window = new InputWindow();
+            window.Owner = this;
+            if ( window.ShowDialog() == true )
+            {
+                this.FillInData();
+            }
+        }
     }
 }

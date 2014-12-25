@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\InputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +117,9 @@
     </Compile>
     <Compile Include="CustomControls\FollowerRow.xaml.cs">
       <DependentUpon>FollowerRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\InputWindow.xaml.cs">
+      <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

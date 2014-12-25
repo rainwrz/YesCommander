@@ -8,8 +8,6 @@
         Title="YesCommander" Height="580" Width="1020"  ResizeMode="CanMinimize" Icon="/Resources/icon32.ico"
         WindowStartupLocation="CenterScreen" params:Design.Theme="Dark" Loaded="Loaded_1" Closing="Window_Closing"
         params:Manager.Theme="Dark">
-    <!--"params:Design.Theme="Dark"
-        params:Manager.Theme="Dark"!-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -170,10 +168,12 @@
                 <StackPanel Name="favoriteRows" Orientation="Vertical" VerticalAlignment="Center" Width="900" >
                 </StackPanel>
             </ScrollViewer>
-            
-            <Button Grid.Row="2" Click="readButton_Click"  Width="90" Margin="8" Content="Read"/>
-            <Image Name="followerImage" Grid.Row="2" Margin="150,0,0,0" Source="/Resources/icon32.ico" Visibility="Hidden"
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="8" HorizontalAlignment="Center">
+                <Button Click="readButton_Click"  Width="90" Margin="8" Content="Read"/>
+                <Button Click="InputButton_Click"  Width="90" Margin="8" Content="Input"/>
+                <Image Name="followerImage" Margin="8" Source="/Resources/icon32.ico" Visibility="Hidden"
                    MouseDown="followerWindow_MouseDown" Stretch="None" MouseEnter="titleBlock_MouseEnter" MouseLeave="titleBlock_MouseLeave"/>
+            </StackPanel>
         </Grid>
         <custom:AllFollowersByClass x:Name="followerDetailPanel" Grid.Row="1" Margin="8,-8,0,8" Visibility="Hidden" />
             

@@ -56,6 +56,53 @@ namespace YesCommander.Classes
             return dt;
         }
 
+        public static DataTable LoadFollowerString( string str )
+        {
+            DataTable dt = new DataTable();
+            string[] lines = str.Split( '\n' );
+            string strLine = "";
+            string[] aryLine = null;
+            string[] tableHead = null;
+            int columnCount = 0;
+            bool IsFirst = true;
+            int linesCount = 0;
+            while ( linesCount < lines.Length )
+            {
+                strLine = lines[ linesCount ];
+                linesCount++;
+                if ( IsFirst == true )
+                {
+                    tableHead = strLine.Split( ',' );
+                    IsFirst = false;
+                    columnCount = tableHead.Length;
+                    for ( int i = 0; i < columnCount; i++ )
+                    {
+                        DataColumn dc = new DataColumn( tableHead[ i ] );
+                        dt.Columns.Add( dc );
+                    }
+                }
+                else
+                {
+                    aryLine = strLine.Split( ',' );
+                    DataRow dr = dt.NewRow();
+                    for ( int j = 0; j < columnCount; j++ )
+                    {
+                        if ( j >= aryLine.Count() )
+                            dr[ j ] = "";
+                        else
+                            dr[ j ] = aryLine[ j ];
+                    }
+                    dt.Rows.Add( dr );
+                }
+            }
+
+            if ( aryLine != null && aryLine.Length > 0 )
+            {
+                dt.DefaultView.Sort = tableHead[ 0 ] + " " + "asc";
+            }
+            return dt;
+        }
+
         public static DataTable LoadMissionFile( string filePath )
         {
             DataTable dt = new DataTable();

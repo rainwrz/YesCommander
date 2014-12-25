@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\obj\Release\
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\obj\Release\
 YesCommander
 none
 false
 TRACE
-C:\Users\wrz\Desktop\新建文件夹\YesCommander\YesCommander\App.xaml
-8-222980422
+C:\Users\rainw\Documents\GitCode\YesCommander\YesCommander\App.xaml
+9-1208803384
 
-191931915170
-161871220680
-CustomControls\AllFollowersByClass.xaml;CustomControls\BaseToolTip.xaml;CustomControls\ExceptionDialog.xaml;CustomControls\followerFromDatabasexaml.xaml;CustomControls\FollowerRow.xaml;MainWindow.xaml;CustomControls\MissionGrid.xaml;CustomControls\Party.xaml;
+20-516065255
+161098930939
+CustomControls\AllFollowersByClass.xaml;CustomControls\BaseToolTip.xaml;CustomControls\ExceptionDialog.xaml;CustomControls\followerFromDatabasexaml.xaml;CustomControls\FollowerRow.xaml;CustomControls\InputWindow.xaml;MainWindow.xaml;CustomControls\MissionGrid.xaml;CustomControls\Party.xaml;
 
-False
+True
 
