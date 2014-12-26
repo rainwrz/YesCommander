@@ -119,7 +119,8 @@ namespace YesCommander
         private void readButton_Click( object sender, RoutedEventArgs e )
         {
             LoadData.OpenFile( ref this.TableFollowers );
-            this.FillInData();
+            if ( this.TableFollowers != null && this.TableFollowers.Rows.Count > 0 )
+                this.FillInData();
         }
 
         private void titleBlock_MouseDown( object sender, MouseButtonEventArgs e )
