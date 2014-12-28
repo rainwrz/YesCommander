@@ -15,7 +15,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="4" HorizontalAlignment="Center">
@@ -23,7 +22,7 @@
             <TextBlock Text="所有随从一览" FontSize="18" Foreground="#ffe8ce"
                        VerticalAlignment="Bottom" Margin="2" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Margin" Value="10,4,0,4"/>
@@ -45,19 +44,22 @@
                 <Image Name="ability5"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
             <TextBlock Grid.Row="3" Name="titleAli" Text="联盟" FontSize="22" Foreground="DodgerBlue" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Center"
                        MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
             <TextBlock Grid.Row="3" Name="titleHrd" Grid.Column="1" Text="部落" FontSize="18" Foreground="Red" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Center"
                        MouseDown="titleBlock_MouseDown" MouseLeave="titleBlock_MouseLeave" MouseEnter="titleBlock_MouseEnter"/>
         </StackPanel>
-            <Image Grid.Row="4" Source="/Resources/gear-bonus-divider_2.jpg" Stretch="None" Width="100"/>
-        <Grid Grid.Row="5" Width="700">
+            <Image Grid.Row="3" Source="/Resources/gear-bonus-divider_2.jpg" Stretch="None" Width="100"/>
+        <Grid Grid.Row="4" Width="850">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Grid.Resources>
@@ -71,12 +73,15 @@
             <TextBlock Text="简体名" Grid.Column="1"/>
             <TextBlock Text="繁体名" Grid.Column="2"/>
             <TextBlock Text="种族" Grid.Column="3" />
-            <TextBlock Text="等级" Grid.Column="4" />
+            <TextBlock Text="始等级" Grid.Column="4" />
+            <TextBlock Text="始技能" Grid.Column="5" />
+            <TextBlock Text="始特长" Grid.Column="6" />
+            <TextBlock Text="已拥有" Grid.Column="7" />
         </Grid>
-        <ScrollViewer Name="aliScroll" Grid.Row="6" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,8">
+        <ScrollViewer Name="aliScroll" Grid.Row="5" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,8">
             <StackPanel Name="aliPanel" Margin="8"/>
         </ScrollViewer>
-        <ScrollViewer Name="hrdScroll"  Grid.Row="6" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,8" Visibility="Hidden">
+        <ScrollViewer Name="hrdScroll"  Grid.Row="5" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Auto" Margin="0,8" Visibility="Hidden">
                 <StackPanel Grid.Column="1" Name="hrdPanel" Margin="8" />
         </ScrollViewer>
 

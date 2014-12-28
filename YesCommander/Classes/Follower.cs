@@ -11,6 +11,7 @@ namespace YesCommander.Classes
 {
     public class Follower
     {
+        public string ID;
         public string Name;
         public string NameEN;
         public string NameCN;
@@ -25,8 +26,9 @@ namespace YesCommander.Classes
         public List<Traits> TraitCollection;
         public string ClassStr;
 
-        public Follower( string name, int quolaty, int level, int itemLevel, string raceName, Classes classType, string classStr, int isActiveIndex, List<int> abilityIndexes, List<int> traitIndexes, string nameEN = null, string nameCN = null, string nameTCN = null )
+        public Follower(string ID, string name, int quolaty, int level, int itemLevel, string raceName, Classes classType, string classStr, int isActiveIndex, List<int> abilityIndexes, List<int> traitIndexes, string nameEN = null, string nameCN = null, string nameTCN = null )
         {
+            this.ID = ID;
             this.Name = name;
             this.Quolaty = quolaty;
             this.Level = level;
@@ -279,7 +281,7 @@ namespace YesCommander.Classes
 
         public enum Races
         {
-            熊猫人,
+            熊猫人=0,
 
             人类,
             侏儒,
@@ -293,7 +295,7 @@ namespace YesCommander.Classes
             兽人,
             巨魔,
             血精灵,
-            地精,
+            地精, //12
 
             埃匹希斯守卫,
             高等鸦人,
@@ -322,14 +324,14 @@ namespace YesCommander.Classes
 
         public enum Traits
         {
-            Unknow,
+            Unknow =-1,
 
             FastLearner,
             HighStamina,
             BurstOfPower,
-            CombatExperience,
+            CombatExperience, //3
 
-            Orcslayer,
+            Orcslayer, //4
             Ogreslayer,
             Beastslayer,
             Gronnslayer,
@@ -337,9 +339,9 @@ namespace YesCommander.Classes
             Primalslayer,
             Voidslayer,
             Talonslayer,
-            Demonslayer,
+            Demonslayer,  //12
 
-            GnomeLover,
+            GnomeLover, //13
             Humanist,
             Dwarvenborn,
             ChildOfTheMoon,
@@ -351,29 +353,29 @@ namespace YesCommander.Classes
             Totemist,
             VoodooZealot,
             Elvenkind,
-            Economist,
+            Economist, //25
 
             LoneWolf,
 
-            Naturalist,
+            Naturalist, //27
             CaveDweller,
             Wastelander,
             Marshwalker,
             Mountaineer,
             ColdBlooded,
             GuerillaFighter,
-            Plainsrunner,
+            Plainsrunner, //34
 
             Town,
 
-            Dancer,
-            EpicMount,
+            Dancer, // 36
+            EpicMount,//37
 
-            Bodyguard,
-            HearthstonePro,
+            Bodyguard, //38
+            HearthstonePro,//39
             Scavenger,
-            ExtraTraining,
-            Mining,
+            ExtraTraining, 
+            Mining,//42
             Herbalism,
             Alchemy,
             Blacksmithing,
@@ -383,9 +385,9 @@ namespace YesCommander.Classes
             Jewelcrafting,
             Leatherworking,
             Tailoring,
-            Skinning,
+            Skinning,//52
             Evergreen,
-            Fishing
+            Angler
         }
         public static Traits GetTratById( int id )
         {
@@ -444,7 +446,7 @@ namespace YesCommander.Classes
                 case 80: return Traits.ExtraTraining;
                 case 201: return Traits.CombatExperience;
                 case 221: return Traits.EpicMount;
-                case 227: return Traits.Fishing;
+                case 227: return Traits.Angler;
                 case 228: return Traits.Evergreen;
                 case 231: return Traits.Bodyguard;
                 case 232: return Traits.Dancer;
@@ -453,6 +455,74 @@ namespace YesCommander.Classes
                 default: return Traits.Unknow;
             }
         }
+
+        public static Traits GetTratByString( string trait )
+        {
+            switch ( trait )
+            {
+                case "Orcslayer": return Traits.Orcslayer;
+                case "Mountaineer": return Traits.Mountaineer;
+                case "ColdBlooded": return Traits.ColdBlooded;
+                case "Wastelander": return Traits.Wastelander;
+                case "FastLearner": return Traits.FastLearner;
+                case "Demonslayer": return Traits.Demonslayer;
+                case "Beastslayer": return Traits.Beastslayer;
+                case "Ogreslayer": return Traits.Ogreslayer;
+                case "Primalslayer": return Traits.Primalslayer;
+                case "Gronnslayer": return Traits.Gronnslayer;
+                case "Furyslayer": return Traits.Furyslayer;
+                case "Voidslayer;": return Traits.Voidslayer;
+                case "Talonslayer": return Traits.Talonslayer;
+                case "Naturalist": return Traits.Naturalist;
+                case "CaveDweller": return Traits.CaveDweller;
+                case "GuerillaFighter": return Traits.GuerillaFighter;
+                case "Town": return Traits.Town;
+                case "Marshwalker": return Traits.Marshwalker;
+                case "Plainsrunner": return Traits.Plainsrunner;
+
+                case "Mining": return Traits.Mining;
+                case "Herbalism": return Traits.Herbalism;
+                case "Alchemy": return Traits.Alchemy;
+                case "Blacksmithing": return Traits.Blacksmithing;
+                case "Enchanting": return Traits.Enchanting;
+                case "Engineering": return Traits.Engineering;
+                case "Inscription": return Traits.Inscription;
+                case "Jewelcrafting": return Traits.Jewelcrafting;
+                case "Leatherworking": return Traits.Leatherworking;
+                case "Tailoring": return Traits.Tailoring;
+                case "Skinning": return Traits.Skinning;
+
+                case "GnomeLover": return Traits.GnomeLover;
+                case "Humanist": return Traits.Humanist;
+                case "Dwarvenborn": return Traits.Dwarvenborn;
+                case "ChildOfTheMoon": return Traits.ChildOfTheMoon;
+                case "AllyOfArgus": return Traits.AllyOfArgus;
+                case "CanineCompanion": return Traits.CanineCompanion;
+                case "BrewAficionado": return Traits.BrewAficionado;
+                case "ChildOfDraenon": return Traits.ChildOfDraenon;
+                case "DeathFascination": return Traits.DeathFascination;
+                case "Totemist": return Traits.Totemist;
+                case "VoodooZealot": return Traits.VoodooZealot;
+                case "Elvenkind": return Traits.Elvenkind;
+                case "Economist": return Traits.Economist;
+
+                case "HighStamina": return Traits.HighStamina;
+                case "BurstOfPower": return Traits.BurstOfPower;
+                case "LoneWolf": return Traits.LoneWolf;
+                case "Scavenger": return Traits.Scavenger;
+                case "ExtraTraining": return Traits.ExtraTraining;
+                case "CombatExperience": return Traits.CombatExperience;
+                case "EpicMount": return Traits.EpicMount;
+                case "Angler": return Traits.Angler;
+                case "Evergreen": return Traits.Evergreen;
+                case "Bodyguard": return Traits.Bodyguard;
+                case "Dancer": return Traits.Dancer;
+                case "HearthstonePro": return Traits.HearthstonePro;
+
+                default: return Traits.Unknow;
+            }
+        }
+
         public static List<Traits> FilteredRaceTrait( Follower follower )
         {
             List<Traits> result = new List<Traits>();
@@ -506,7 +576,7 @@ namespace YesCommander.Classes
         }
         public static ImageSource GetImageFromFromTrait( Traits trait )
         {
-            if ( trait == Traits.Unknow || trait == Traits.Fishing )
+            if ( trait == Traits.Unknow )
                 return null;
             BitmapImage bi = new BitmapImage( new Uri(
                 "pack://application:,,,/YesCommander;component/Resources/" + trait.ToString()+".jpg",
@@ -516,9 +586,9 @@ namespace YesCommander.Classes
 
         public enum Classes
         {
-            Unknown,
+            Unknown=-1,
 
-            BloodDeathKnight,
+            BloodDeathKnight=0,
             FrostDeathKnight,
             UnHolyDeathKnight,
             BalanceDruid,
@@ -667,6 +737,7 @@ namespace YesCommander.Classes
                         default: return Classes.MarksmanshipHunter;
                     }
                 case "盗贼":
+                case "潜行者":
                     switch ( specStr )
                     {
                         case "刺杀": return Classes.AssassinationRogue;
@@ -722,8 +793,11 @@ namespace YesCommander.Classes
                 case "猎人-兽王": return Classes.BeastMasterHunter;
                 case "猎人-生存": return Classes.SurvivalHunter;
                 case "猎人-射击": return Classes.MarksmanshipHunter;
+                case "潜行者-刺杀":
                 case "盗贼-刺杀": return Classes.AssassinationRogue;
+                case "潜行者-战斗":
                 case "盗贼-战斗": return Classes.CombatRogue;
+                case "潜行者-敏锐":
                 case "盗贼-敏锐": return Classes.SubtletyRogue;
                 case "萨满-元素": return Classes.ElementalShaman;
                 case "萨满-增强": return Classes.EnhancementShaman;
@@ -732,6 +806,48 @@ namespace YesCommander.Classes
                 case "骑士-防护": return Classes.ProtectionPaladin;
                 case "骑士-神圣": return Classes.HolyPaladin;
                 default: return Classes.Unknown;
+            }
+        }
+
+        public static string GetCNStringByClass( Classes c )
+        {
+            switch ( c )
+            {
+                case Classes.BloodDeathKnight: return "死亡骑士-鲜血";
+                case Classes.FrostDeathKnight: return "死亡骑士-冰霜";
+                case Classes.UnHolyDeathKnight: return "死亡骑士-邪恶";
+                case Classes.BalanceDruid: return "德鲁伊-平衡";
+                case Classes.FeralDruid: return "德鲁伊-野性";
+                case Classes.RestorationDruid: return "德鲁伊-恢复";
+                case Classes.GuardianDruid: return "德鲁伊-守护";
+                case Classes.ArmsWarrior: return "战士-武器";
+                case Classes.FuryWarrior: return "战士-狂暴";
+                case Classes.ProtectionWarrior: return "战士-防护";
+                case Classes.DemonologyWarlock: return "术士-恶魔";
+                case Classes.AfflictionWarlock: return "术士-痛苦";
+                case Classes.DestructionWarlock: return "术士-毁灭";
+                case Classes.MistweaverMonk: return "武僧-织雾";
+                case Classes.BrewmasterMonk: return "武僧-酿酒";
+                case Classes.WindwalkerMonk: return "武僧-踏风";
+                case Classes.ArcaneMage: return "法师-奥术";
+                case Classes.FireMage: return "法师-火焰";
+                case Classes.FrostMage: return "法师-冰霜";
+                case Classes.HolyPriest: return "牧师-神圣";
+                case Classes.DisciplinePriest: return "牧师-戒律";
+                case Classes.ShadowPriest: return "牧师-暗影";
+                case Classes.BeastMasterHunter: return "猎人-兽王";
+                case Classes.SurvivalHunter: return "猎人-生存";
+                case Classes.MarksmanshipHunter: return "猎人-射击";
+                case Classes.AssassinationRogue: return "潜行者-刺杀";
+                case Classes.CombatRogue: return "潜行者-战斗";
+                case Classes.SubtletyRogue: return "潜行者-敏锐";
+                case Classes.ElementalShaman: return "萨满-元素";
+                case Classes.EnhancementShaman: return "萨满-增强";
+                case Classes.RestorationShaman: return "萨满-恢复";
+                case Classes.RetributionPaladin: return "骑士-惩戒";
+                case Classes.ProtectionPaladin: return "骑士-防护";
+                case Classes.HolyPaladin: return "骑士-神圣";
+                default: return Classes.Unknown.ToString();
             }
         }
     }

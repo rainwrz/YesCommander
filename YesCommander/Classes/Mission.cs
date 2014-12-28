@@ -26,12 +26,12 @@ namespace YesCommander.Classes
         public Dictionary<Follower.Abilities, int> CounterAbilitiesCollection;
         public List<Follower> AssignedFollowers;
 
-        public float SucessPerAbility;
-        public float SucessPerFollower;
-        public float SucessPerRaceLover;
-        public float SucessPerBurstStamCombatExpSlayer;
-        public float SucessPerItemLevel;
-        public float TotalSucessChance;
+        public double SucessPerAbility;
+        public double SucessPerFollower;
+        public double SucessPerRaceLover;
+        public double SucessPerBurstStamCombatExpSlayer;
+        public double SucessPerItemLevel;
+        public double TotalSucessChance;
         public float BasicSucessChange;
         public List<Follower.Traits> partyBuffs;
         public static readonly int MAXITEMLEVEL = 655;
@@ -80,6 +80,10 @@ namespace YesCommander.Classes
 
         private void CalculateSucess()
         {
+            //int stringLength = ( 1 / ( (float)this.TotalCounterAbilitiesNeed + 1 ) ).ToString().Length;
+            //stringLength = stringLength > 6 ? 6 : stringLength;
+            //string stringValue = ( 1 / ( (float)this.TotalCounterAbilitiesNeed + 1 ) ).ToString().Substring( 0, stringLength );
+            //this.SucessPerAbility = Convert.ToDouble( stringValue );
             this.SucessPerAbility = 1 / ( (float)this.TotalCounterAbilitiesNeed + 1 );
             this.SucessPerFollower = this.SucessPerAbility / this.FollowersNeed;
             this.SucessPerRaceLover = this.SucessPerAbility / 2;
@@ -93,9 +97,9 @@ namespace YesCommander.Classes
             this.TotalSucessChance = this.CalculateFinalSucess() + this.BasicSucessChange;
         }
 
-        private float CalculateFinalSucess()
+        private double CalculateFinalSucess()
         {
-            float result = 0;
+            double result = 0;
             this.partyBuffs = new List<Follower.Traits>();
 
             if ( this.AssignedFollowers.Count == this.FollowersNeed )
@@ -233,9 +237,9 @@ namespace YesCommander.Classes
             return result;
         }
 
-        private float SingleTraitRaceMatching( Follower follower1, Follower follower2, Follower follower3 = null )
+        private double SingleTraitRaceMatching( Follower follower1, Follower follower2, Follower follower3 = null )
         {
-            float result = 0;
+            double result = 0;
             foreach ( Follower.Traits trait in Follower.FilteredRaceTrait( follower1 ) )
             {
                 if ( Follower.GetRaceMatchedByTrait( trait ) == follower2.Race || ( follower3 != null && Follower.GetRaceMatchedByTrait( trait ) == follower3.Race ) )

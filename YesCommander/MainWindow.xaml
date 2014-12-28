@@ -18,6 +18,7 @@
             <RadioButton Name="radioFollowers" Content="随从一览" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
             <RadioButton Name="radioMissions" Content="任务模拟" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
             <RadioButton Name="radioAllFollowers" Content="所有随从" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
+            <RadioButton Name="radioAnalysis" Content="数据分析" Margin="4" Checked="RadioButton_Checked" Visibility="Hidden"/>
         </StackPanel>
         <Grid Grid.Row="1" Grid.RowSpan="2" Name="questPanel" Visibility="Visible" Margin="8,-8,0,8">
             <Grid.RowDefinitions>
@@ -159,7 +160,7 @@
                     <TextBlock Grid.Column="8" Text="特长" />
                     <TextBlock Grid.Column="9" Text="冻结" />
                 </Grid>
-            </Grid>            
+            </Grid>
             <ScrollViewer Name="allScroll" Grid.Row="1" HorizontalScrollBarVisibility="Hidden" BorderBrush="Black" VerticalScrollBarVisibility="Visible" Margin="4" VerticalAlignment="Top">
                 <StackPanel Name="followerRows" Orientation="Vertical" VerticalAlignment="Center" Width="900" >
                 </StackPanel>
@@ -176,6 +177,6 @@
             </StackPanel>
         </Grid>
         <custom:AllFollowersByClass x:Name="followerDetailPanel" Grid.Row="1" Margin="8,-8,0,8" Visibility="Hidden" />
-            
+        <custom:AnalysisControl x:Name="analysisPanel" Grid.Row="1" Margin="8,-8,0,8" Visibility="Hidden"/>
     </Grid>
 </metro:Window>

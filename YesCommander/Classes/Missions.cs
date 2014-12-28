@@ -19,7 +19,7 @@ namespace YesCommander.Model
             this.HighmaulMissions = new Dictionary<int, Mission>();
             this.RingMissions = new Dictionary<int, Mission>();
             this.OtherThreeFollowersMissions = new Dictionary<int, Mission>();
-            this.AllMissions = LoadData.LoadMissionFile( "missions.txt" );
+            this.AllMissions = LoadData.LoadMissionFile( "Txts/missions.txt" );
 
             var data = from temp in this.AllMissions.AsEnumerable()
                        where

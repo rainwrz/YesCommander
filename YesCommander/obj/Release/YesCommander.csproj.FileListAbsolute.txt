@@ -128,3 +128,7 @@ C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommand
 C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.g.resources
 C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.Properties.Resources.resources
 C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\YesCommander.csproj.GenerateResource.Cache
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.baml
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\Components\AbilityCheckBox.g.cs
+C:\Users\wrz\Documents\Visual Studio 2012\Projects\Gitup\YesCommander\YesCommander\obj\Release\CustomControls\AnalysisControl.baml

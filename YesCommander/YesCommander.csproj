@@ -69,7 +69,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomControls\AnalysisControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControls\BaseToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\Components\AbilityCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,8 +114,14 @@
     <Compile Include="CustomControls\AllFollowersByClass.xaml.cs">
       <DependentUpon>AllFollowersByClass.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AnalysisControl.xaml.cs">
+      <DependentUpon>AnalysisControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\BaseToolTip.xaml.cs">
       <DependentUpon>BaseToolTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\Components\AbilityCheckBox.xaml.cs">
+      <DependentUpon>AbilityCheckBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\ExceptionDialog.xaml.cs">
       <DependentUpon>ExceptionDialog.xaml</DependentUpon>
@@ -266,6 +280,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\help-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ALI.txt" />
+    <Resource Include="Resources\AliSkill.txt" />
+    <Resource Include="Resources\HRD.txt" />
+    <Resource Include="Resources\HrdSkill.txt" />
+    <Resource Include="Resources\missions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,31 +36,33 @@ namespace YesCommander.CustomControls
         public void Create( Mission mission )
         {
             Follower follower1 = mission.AssignedFollowers[ 0 ];
-            this.PlaceFollower( follower1, mission, this.followerName1, this.follower1Images );
+            this.PlaceFollower( follower1, mission, this.followerName1, this.followerIlevel1, this.followerFrozen1, this.follower1Images );
             if ( mission.AssignedFollowers.Count > 1 )
             {
                 Follower follower2 = mission.AssignedFollowers[ 1 ];
-                this.PlaceFollower( follower2, mission, this.followerName2, this.follower2Images );
+                this.PlaceFollower( follower2, mission, this.followerName2, this.followerIlevel2, this.followerFrozen2, this.follower2Images );
             }
             if ( mission.AssignedFollowers.Count > 2 )
             {
                 Follower follower3 = mission.AssignedFollowers[ 2 ];
-                this.PlaceFollower( follower3, mission, this.followerName3, this.follower3Images );
+                this.PlaceFollower( follower3, mission, this.followerName3, this.followerIlevel3, this.followerFrozen3, this.follower3Images );
             }
             this.PlacePartyBuff( mission );
         }
 
-        public void PlaceFollower( Follower follower, Mission mission, TextBlock block, StackPanel followerImages )
+        public void PlaceFollower( Follower follower, Mission mission, TextBlock block, TextBlock ilevel, TextBlock isFrozen, StackPanel followerImages )
         {
-            block.Text = follower.Name + "(" + follower.ItemLevel.ToString() + ")";
+            block.Text = follower.Name;
+            ilevel.Text ="(" + follower.ItemLevel.ToString() + ")";
             if ( !follower.IsActive )
-                block.Text+="(冻结)";
+                isFrozen.Text = "(冻结)";
             if ( follower.Quolaty == 4 )
                 block.Foreground = Brushes.BlueViolet;
             else if ( follower.Quolaty == 3 )
                 block.Foreground = Brushes.DodgerBlue;
             else if ( follower.Quolaty == 2 )
                 block.Foreground = Brushes.Lime;
+            ilevel.Foreground = follower.ItemLevel >= mission.ItemLevelNeed ? Brushes.Lime : Brushes.Red;
 
             followerImages.Children[ 0 ].Visibility = System.Windows.Visibility.Visible;
             ( ( followerImages.Children[ 0 ] as StackPanel ).Children[ 0 ] as Image ).Source = Follower.GetImageFromAbility( follower.AbilityCollection[ 0 ] );
@@ -112,15 +114,21 @@ namespace YesCommander.CustomControls
             }
             this.timeNeed.Text = mission.MissionTimeCaculatedStr;
             this.timeNeed.Foreground = mission.partyBuffs.Contains( Follower.Traits.EpicMount ) ? Brushes.Lime : Brushes.White;
-            float sucessChance= 100 * mission.TotalSucessChance;
+            double sucessChance = 100 * mission.TotalSucessChance;
             this.sucessChance.Text = sucessChance.ToString( "#,##0.##", new CultureInfo( "en-US" ) );
             this.sucessChance.Foreground = sucessChance >= 100 ? Brushes.Lime : Brushes.Red;
         }
         public void Clear()
         {
             this.followerName1.Text = string.Empty;
+            this.followerIlevel1.Text = string.Empty;
+            this.followerFrozen1.Text = string.Empty;
             this.followerName2.Text = string.Empty;
+            this.followerIlevel2.Text = string.Empty;
+            this.followerFrozen2.Text = string.Empty;
             this.followerName3.Text = string.Empty;
+            this.followerIlevel3.Text = string.Empty;
+            this.followerFrozen3.Text = string.Empty;
             foreach ( StackPanel panel in this.follower1Images.Children )
             {
                 panel.Background = null;

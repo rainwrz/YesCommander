@@ -35,6 +35,8 @@
                 </Style>
             </StackPanel.Resources>
             <TextBlock Name="followerName1" />
+            <TextBlock Name="followerIlevel1" Margin="0" />
+            <TextBlock Name="followerFrozen1" Foreground="Red"  Margin="0" />
             <StackPanel Name="follower1Images" Orientation="Horizontal">
                 <StackPanel Height="34" Width="24" VerticalAlignment="Center">                    
                 <Image />
@@ -53,6 +55,8 @@
                 </StackPanel>
             </StackPanel>
             <TextBlock Name="followerName2"/>
+            <TextBlock Name="followerIlevel2"  Margin="0" />
+            <TextBlock Name="followerFrozen2" Foreground="Red" Margin="0" />
             <StackPanel Name="follower2Images" Orientation="Horizontal">
                 <StackPanel Height="34" Width="24" VerticalAlignment="Center">
                     <Image />
@@ -71,6 +75,8 @@
                 </StackPanel>
             </StackPanel>
             <TextBlock Name="followerName3"/>
+            <TextBlock Name="followerIlevel3"  Margin="0" />
+            <TextBlock Name="followerFrozen3" Foreground="Red"  Margin="0" />
             <StackPanel Name="follower3Images" Orientation="Horizontal">
 
                 <StackPanel Height="34" Width="24" VerticalAlignment="Center">

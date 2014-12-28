@@ -8,6 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/help-icon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/ali.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/aliskill.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/hrd.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/hrdskill.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/missions.txt")]
 
 

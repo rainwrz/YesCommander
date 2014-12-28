@@ -44,6 +44,16 @@ namespace YesCommander.CustomControls
             }
         }
 
+        public FollowerRow( Follower follower, bool isFavorite )
+        {
+            InitializeComponent();
+            this.isFavoriteMode = true;
+            this.isFavorit.IsEnabled = false;
+            this.isFavorit.IsChecked = isFavorite;
+            this.currentFollower = follower;
+            this.SetFollower( follower );
+        }
+
         public void Clear()
         {
             this.textName.Text = string.Empty;
@@ -79,7 +89,7 @@ namespace YesCommander.CustomControls
                 this.textName.Foreground = Brushes.Lime;
 
             this.textRace.Text = follower.Race.ToString();
-            this.textClass.Text = follower.ClassStr;
+            this.textClass.Text = Follower.GetCNStringByClass( follower.Class );
             this.textLevel.Text = follower.Level.ToString();
             this.textItemLevel.Text = follower.ItemLevel.ToString();
             if ( follower.ItemLevel >=645 )

@@ -45,11 +45,10 @@ namespace YesCommander
         public MainWindow()
         {
             InitializeComponent();
-            this.maxNumberOfPartyComboBox.ItemsSource = new List<string>() { "最多显示1只队伍","最多显示10只队伍", "最多显示20只队伍", "最多显示50只队伍(降低性能)", "最多显示100条队伍(你确定？)" };
+            this.maxNumberOfPartyComboBox.ItemsSource = new List<string>() { "最多显示1只队伍","最多显示10只队伍", "最多显示20只队伍", "最多显示50只队伍(降低性能)", "最多显示100只队伍(你确定？)" };
             this.maxNumberOfPartyComboBox.SelectedIndex = 1;
             this.Missions = new Missions();
             this.FillInMissions( this.Missions.HighmaulMissions );
-            this.followerDetailPanel.LoadFile();
             this.radioFollowers.IsChecked = true;
             this.favoriteFollowers = new List<Follower>();
         }
@@ -61,9 +60,10 @@ namespace YesCommander
             ToolTipService.SetInitialShowDelay( this.missionWindowImage, 0 );
             Version version = Assembly.GetEntryAssembly().GetName().Version;
             this.about.ToolTip = new BaseToolTip( "YesCommander", "作者：梧桐哟梧桐，当前版本："
-                + version.Major.ToString()+"."+version.Minor.ToString()
+                + version.Major.ToString() + "." + version.Minor.ToString() + ( version.Build == 0 ? string.Empty : "." + version.Build.ToString() )
                 + "\r\n\r\n注意：此软件仅发布在NGA。下载地址仅限百度网盘，其他途径下载均有风险。"
-                + " \r\n\r\n熊猫酒仙联盟公会【月 神 之 怒】招募有识之士。共同迎战德拉诺之王。" );
+                + " \r\n\r\n熊猫酒仙联盟公会【月 神 之 怒】招募有识之士。共同迎战德拉诺之王。"
+                + " \r\n\r\n广告位招租。" );
             ToolTipService.SetShowDuration( this.about, 60000 );
             ToolTipService.SetInitialShowDelay( this.about, 0 );
         }
@@ -73,6 +73,7 @@ namespace YesCommander
             this.followerPanel.Visibility = System.Windows.Visibility.Hidden;
             this.questPanel.Visibility = System.Windows.Visibility.Hidden;
             this.followerDetailPanel.Visibility = System.Windows.Visibility.Hidden;
+            this.analysisPanel.Visibility = System.Windows.Visibility.Hidden;
 
             if ( this.radioFollowers.IsChecked == true )
                 this.followerPanel.Visibility = Visibility.Visible;
@@ -84,6 +85,19 @@ namespace YesCommander
             }
             else if ( this.radioAllFollowers.IsChecked == true )
                 this.followerDetailPanel.Visibility = System.Windows.Visibility.Visible;
+            else if ( this.radioAnalysis.IsChecked == true )
+            {
+                this.analysisPanel.Visibility = System.Windows.Visibility.Visible;
+                if ( this.analysisPanel.titleMy.FontSize == 22 )
+                {
+                    if ( this.analysisPanel.abilityAnalysis.FontSize == 18 )
+                        this.analysisPanel.CheckBox_Checked( null, null );
+                    else if ( this.analysisPanel.raceAnalysis.FontSize == 18 )
+                        this.analysisPanel.RunRaceFilter();
+                    else if ( this.analysisPanel.traitAnalysis.FontSize == 18 )
+                        this.analysisPanel.TraitCheckBox_Checked( null, null );
+                }
+            }
         }
 
         private void ComboBox_SelectionChanged( object sender, SelectionChangedEventArgs e )
@@ -310,6 +324,7 @@ namespace YesCommander
                 this.radioFollowers.Visibility = System.Windows.Visibility.Visible;
                 this.radioMissions.Visibility = System.Windows.Visibility.Visible;
                 this.radioAllFollowers.Visibility = System.Windows.Visibility.Visible;
+                this.radioAnalysis.Visibility = System.Windows.Visibility.Visible;
                 this.titleGrid2.Visibility = System.Windows.Visibility.Visible;
                 this.followerImage.Visibility = System.Windows.Visibility.Visible;
             }
@@ -388,13 +403,16 @@ namespace YesCommander
                 if ( Convert.ToInt16( row[ "品质" ] ) > 3 )
                     traits.Add( Convert.ToInt16( row[ "特长ID3" ] ) );
 
-                this.currentFollowers.Add( new Follower( row[ "姓名" ].ToString(), Convert.ToInt16( row[ "品质" ] ), Convert.ToInt16( row[ "等级" ] ), Convert.ToInt16( row[ "装等" ] ),
+                this.currentFollowers.Add( new Follower( row["ID"].ToString(), row[ "姓名" ].ToString(), Convert.ToInt16( row[ "品质" ] ), Convert.ToInt16( row[ "等级" ] ), Convert.ToInt16( row[ "装等" ] ),
                     row[ "种族" ].ToString(), Follower.GetClassBySpec( Convert.ToInt16( row[ "职业ID" ] ) ), row[ "职业" ].ToString(), Convert.ToInt16( row[ "激活" ] ), abilities, traits ) );
             }
 
             this.followerRows.Children.Clear();
             this.AddEpicFollowers();
             this.AddFollowers();
+            this.followerDetailPanel.AssignFollowers( this.currentFollowers );
+            this.followerDetailPanel.LoadFile();
+            this.analysisPanel.AssignFollowers( ref this.currentFollowers, ref this.favoriteFollowers, this.followerDetailPanel.listAli, this.followerDetailPanel.listHrd );
         }
 
         private void AddFollowers( bool isFavorite=false )

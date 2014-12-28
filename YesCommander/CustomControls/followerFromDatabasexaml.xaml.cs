@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YesCommander.Classes;
 
 namespace YesCommander.CustomControls
 {
@@ -19,17 +20,33 @@ namespace YesCommander.CustomControls
     /// </summary>
     public partial class followerFromDatabasexaml : UserControl
     {
-        public followerFromDatabasexaml(string nameCN, string nameEN, string nameTCN, string race, string level, int quolaty)
+        public followerFromDatabasexaml( Follower follower, int ownedColor )
         {
             InitializeComponent();
             this.Clear();
-            this.CN.Text = nameCN;
-            this.EN.Text = nameEN;
-            this.TranCN.Text = nameTCN;
-            this.race.Text = race;
-            this.level.Text = level;
+            this.CN.Text = follower.NameCN;
+            this.EN.Text = follower.NameEN;
+            this.TranCN.Text = follower.NameTCN;
+            this.race.Text = follower.Race.ToString();
+            this.level.Text = follower.Level.ToString();
+            if ( ownedColor > 1 )
+            {
+                this.owned.Text = "有";
+                switch ( ownedColor )
+                {
+                    case 4: this.owned.Foreground = Brushes.BlueViolet; break;
+                    case 3: this.owned.Foreground = Brushes.DodgerBlue; break;
+                    case 2: this.owned.Foreground = Brushes.Lime; break;
+                }
+            }
+
+            if ( follower.AbilityCollection.Count > 0 )
+                this.abilityImage.Source = Follower.GetImageFromAbility( follower.AbilityCollection[ 0 ] );
+            if ( follower.TraitCollection.Count > 0 )
+                this.traitImage.Source = Follower.GetImageFromFromTrait( follower.TraitCollection[ 0 ] );
+
             Brush color;
-            switch ( quolaty )
+            switch ( follower.Quolaty )
             {
                 case 4: color = Brushes.BlueViolet; break;
                 case 3: color = Brushes.DodgerBlue; break;
@@ -46,6 +63,9 @@ namespace YesCommander.CustomControls
             this.TranCN.Text = string.Empty;
             this.race.Text = string.Empty;
             this.level.Text = string.Empty;
+            this.owned.Text = string.Empty;
+            this.abilityImage.Source = null;
+            this.traitImage.Source = null;
         }
     }
 }
